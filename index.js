@@ -10,17 +10,24 @@ function driverNamesWithRevenueOver(driverArray, revenueString) {
     });
 }
 
+
 function exactMatch(driverArray, pair) {
-  return driverArray.filter(function (driver) {
-    return (driver[key_finder(pair)] === pair[key_finder(pair)]);
-    });
-  }
-    //helper method
-    function key_finder(pair) {
-      for (const key in pair) {
-        return key;
-      }
-    }
+  return driverArray.filter(function(driver) {
+    return driver[Object.keys(pair)] === Object.values(pair)[0]
+  });
+}
+
+// function exactMatch(driverArray, pair) {
+//   return driverArray.filter(function (driver) {
+//     return (driver[key_finder(pair)] === pair[key_finder(pair)]);
+//     });
+//   }
+//     //helper method
+//     function key_finder(pair) {
+//       for (const key in pair) {
+//         return key;
+//       }
+//     }
 
 function exactMatchToList(driverArray, pair) {
   return exactMatch(driverArray, pair).map(function(driver){
